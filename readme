@@ -1,0 +1,94 @@
+<!-- <?php
+session_start();
+if(isset($_SESSION['loggedInStatus'])){
+    header('Location: index.php');
+    exit();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="style.css">
+     <title>Document</title>
+</head>
+<body>
+     <div class="register-card" id="register">
+          <h2 class="title">Register</h2>
+          <?php
+                    if(isset($_SESSION['errors']) && count($_SESSION['errors']) > 0){
+                        foreach($_SESSION['errors'] as $error){
+                            ?>
+                            <div class="alert alert-warning"><?= $error; ?></div>
+                            <?php
+                        }
+                        unset($_SESSION['errors']);
+                    }
+
+                    if(isset($_SESSION['message'])){
+                        echo '<div class="alert alert-success">'.$_SESSION['message'].'</div>';
+                        unset($_SESSION['message']);
+                    }
+                    ?>
+          <form action="register-code.php">
+            <div class="input-container">
+              <label for="role-register">Register as:</label>
+              <select id="role-register" name="role" onchange="handleRoleChange('register')">
+                <option value="dosen">Dosen</option>
+                <option value="mahasiswa">Mahasiswa</option>
+              </select>
+            </div>
+            <div class="input-container">
+               <label id="id-label-register" for="identifier-register">NSN</label>
+               <input type="text" id="identifier-register" name="identifier" placeholder="Masukan NSN" class="form-control">  
+             </div>
+            <div class="input-container">
+               <label id="name-label-register" for="identifier-register">Nama</label>
+               <input type="text" id="name-register" name="name-identifier" placeholder="Masukan Nama Anda" class="form-control">  
+             </div>
+            <div class="input-container">
+              <label for="password-register">Password</label>
+              <input type="password" id="password-register" name="password" placeholder="Create a password" class="form-control">
+            </div>
+            <div class="input-container">
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" class="form-control">
+            </div>
+            <button type="submit" class="register-btn">Register</button>
+            <p>Already have an account? <a href="index.php">Login</a></p>
+          </form>
+        </div>
+      </div>
+</body>
+<script src="index.js"></script>
+</html> -->
+
+
+
+Entitas dan Atribut
+**User **
+
+user_id (Primary Key)
+username (Unique)
+password (Hash)
+role (ENUM: 'dosen', 'mahasiswa')
+created_at (Timestamp)
+updated_at (Timestamp)
+Dosen
+
+dosen_id (Primary Key, Foreign Key to User.user_id)
+nama (String)
+nip (String, Unique)
+email (String, Unique)
+jurusan (String)
+Mahasiswa
+
+mahasiswa_id (Primary Key, Foreign Key to User.user_id)
+nama (String)
+nim (String, Unique)
+email (String, Unique)
+jurusan (String)
+
+

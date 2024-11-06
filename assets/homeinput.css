@@ -1,0 +1,47 @@
+/* Contoh homeinput.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f8f8; /* Warna latar belakang putih */
+  color: #333; /* Warna teks hitam */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+  margin-bottom: 20px;
+  color: #000; /* Judul hitam */
+}
+
+form {
+  background-color: #fff; /* Latar belakang formulir putih */
+  border: 1px solid #ccc; /* Garis abu-abu */
+  border-radius: 8px; /* Sudut melengkung */
+  padding: 50px; /* Ruang di dalam formulir */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan halus */
+  width: 500px; /* Lebar formulir 500px */
+  max-width: 90%; /* Maksimal lebar 90% dari lebar layar */
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+input[type="submit"] {
+  width: 100%; /* Lebar penuh */
+  padding: 8px; /* Ruang di dalam input */
+  margin-bottom: 15px; /* Jarak antar input */
+  border: 1px solid #ccc; /* Garis abu-abu */
+  border-radius: 4px; /* Sudut melengkung */
+}
+
+input[type="submit"] {
+  background-color: #000; /* Latar belakang hitam */
+  color: #fff; /* Teks putih */
+  cursor: pointer; /* Kursor pointer */
+}
+
+input[type="submit"]:hover {
+  background-color: #444; /* Latar belakang hitam lebih gelap saat hover */
+}
