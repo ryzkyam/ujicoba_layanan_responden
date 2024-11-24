@@ -21,7 +21,6 @@ if (isset($_SESSION['loggedInStatus'])) {
           <!-- Login Form -->
           <div class="login-card">
                <h2 class="title">Login</h2>
-
                <?php
                // Menampilkan pesan error jika ada
                if (isset($_SESSION['errors']) && count($_SESSION['errors']) > 0) {
@@ -36,8 +35,7 @@ if (isset($_SESSION['loggedInStatus'])) {
                     echo "<div class='alert alert-success'>{$_SESSION['message']}</div>";
                     unset($_SESSION['message']);
                }
-               ?>
-
+               ?>~
                <!-- Form Login -->
                <form action="login-code.php" method="POST">
                     <div class="input-container">

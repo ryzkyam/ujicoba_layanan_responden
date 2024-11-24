@@ -92,3 +92,102 @@ email (String, Unique)
 jurusan (String)
 
 
+Output Klasifikasi
+Jumlah Daun dan Ukuran Pohon:
+
+Jumlah Daun: Terdapat 5 daun dalam pohon keputusan yang dihasilkan.
+Ukuran Pohon: Kompleksitas pohon keputusan ini diukur dengan ukuran 8, yang menunjukkan jumlah total simpul dalam pohon.
+Waktu yang Diperlukan untuk Membangun Model:
+
+Proses pembangunan model klasifikasi memakan waktu 0,02 detik.
+Ringkasan Stratified Cross-validation:
+
+Instance yang Diklasifikasikan dengan Benar: Dari total 14 instance, 7 instance berhasil diklasifikasikan dengan akurat, menghasilkan tingkat akurasi sebesar 50%.
+
+Instance yang Diklasifikasikan dengan Salah: Terdapat 7 instance yang diklasifikasikan secara keliru, juga mencerminkan 50% dari total instance.
+
+Statistik Kappa: Nilai kappa sebesar -0,0426 menunjukkan adanya kesepakatan yang sangat rendah antara prediksi model dan label yang sebenarnya.
+
+Kesalahan Absolut Rata-rata (MAE): Nilai MAE tercatat sebesar 0,4167, menunjukkan rata-rata kesalahan dalam prediksi.
+
+Kesalahan Kuadrat Rata-rata (RMSE): RMSE yang dihasilkan adalah 0,5984, memberikan gambaran tentang seberapa besar kesalahan prediksi secara keseluruhan.
+
+Kesalahan Absolut Relatif: Persentase kesalahan absolut dibandingkan dengan model dasar adalah 87,5%.
+
+Kesalahan Kuadrat Relatif Akar: Persentase kesalahan kuadrat relatif terhadap model dasar tercatat sebesar 121,3%.
+
+Total Jumlah Instance: Dataset ini terdiri dari 14 instance secara keseluruhan.
+
+Akurasi Detail Berdasarkan Kelas:
+
+TP Rate (Tingkat Positif Benar): Proporsi instance yang diklasifikasikan dengan benar untuk masing-masing kelas. Untuk kelas "yes", nilai TP Rate adalah 0,556, sedangkan untuk kelas "no" adalah 0,400.
+
+FP Rate (Tingkat Positif Salah): Proporsi instance dari kelas lain yang salah diklasifikasikan sebagai kelas ini.
+
+Presisi: Mengukur tingkat keakuratan prediksi yang benar untuk setiap kelas.
+
+Recall: Menunjukkan kemampuan model dalam mendeteksi instance yang benar untuk setiap kelas.
+
+F-Measure: Menggambarkan keseimbangan antara presisi dan recall, memberikan gambaran tentang performa model secara keseluruhan.
+
+MCC (Matthews Correlation Coefficient): Mengukur kualitas klasifikasi biner dengan nilai -0,043, yang menunjukkan performa yang kurang memuaskan.
+
+Area ROC: Area di bawah kurva ROC untuk setiap kelas; semakin mendekati 1, semakin baik performa model.
+
+Area PRC: Area di bawah kurva presisi-recall yang menunjukkan kinerja model dalam hal presisi dan recall.
+
+Matriks Kebingungan:
+
+Matriks kebingungan memberikan gambaran tentang bagaimana instance diklasifikasikan:
+5 instance dari kelas "yes" berhasil diklasifikasikan sebagai "yes" (benar).
+4 instance dari kelas "yes" salah diklasifikasikan sebagai "no" (salah).
+3 instance dari kelas "no" salah diklasifikasikan sebagai "yes" (salah).
+2 instance dari kelas "no" berhasil diklasifikasikan sebagai "no" (benar).
+
+
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id       Int @id @default(autoincrement())
+  username  String
+  fullname  String
+  email     String @unique
+  password  String
+  profile   String?
+  tasks     Tasks[] 
+  createdAt DateTime @default(now())
+  updatedAt DateTime   @updatedAt
+
+
+}
+
+
+model Tasks {
+  id         Int @id @default(autoincrement())
+  title      String
+  content    String
+  status     String @default("In Progress")
+  deleted_at DateTime?
+  user       User @relation(fields: [userId], references: [id])
+  userId     Int 
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime   @updatedAt
+  
+}
+

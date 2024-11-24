@@ -14,7 +14,7 @@ if (isset($_POST['add-file-respondent'])) { {
 <head>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href='../assets/homeinput.css'>
+     <link rel="stylesheet" href='../assets/uploadfile.css'>
      <title>Tabel Respondent</title>
 </head>
 
