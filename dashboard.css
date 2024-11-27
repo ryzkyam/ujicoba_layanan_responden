@@ -18,6 +18,15 @@
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s ease-in-out;
+  position: fixed; /* Keep sidebar fixed */
+  top: 0; /* Align to the top */
+  left: -250px; /* Hide sidebar off-screen */
+  height: 100vh; /* Full height */
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.sidebar.open {
+  transform: translateX(250px); /* Slide in when open */
 }
 
 .sidebar h2 {
@@ -52,6 +61,24 @@
 
 .sidebar ul li a i {
   font-size: 1.2rem;
+}
+
+/* Button styling */
+.toggle-btn {
+  position: absolute; /* Position the button */
+  top: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1001; /* Ensure button is above sidebar */
+}
+
+.toggle-btn:hover {
+  background-color: #0056b3;
 }
 
 /* Styling untuk konten utama */
@@ -117,7 +144,9 @@ main {
 
 .card {
   display: flex;
-  width: calc(33.333% - 16px);
+  flex-direction: column; /* Membuat card vertikal */
+  flex: 1 1 auto; /* Fleksibel mengikuti ukuran konten */
+  max-width: 300px; /* Atur ukuran maksimum card */
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -126,11 +155,8 @@ main {
 }
 
 .card img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50%;
-  height: 200px;
+  width: 100%; /* Menggunakan lebar penuh */
+  height: 200px; /* Atur tinggi tetap */
   object-fit: cover;
 }
 

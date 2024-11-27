@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Profile Dashboard</title>
-  <link rel="stylesheet" href="../assets/profil.css">
+  <link rel="stylesheet" href="./profil.css">
 </head>
 
 <body>
@@ -14,7 +14,7 @@
       <h2>Profil User</h2>
       <nav>
         <ul>
-          <li><a href="./Respondent.php">Upload file</a></li>
+          <li><a href="./Uploadfile.php">Upload file</a></li>
           <li><a href="#">Settings</a></li>
           <li><a href="#">Messages</a></li>
           <li><a href="#">Notifications</a></li>
@@ -50,9 +50,11 @@
           <h3>Bio</h3>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
         </div>
+        <!-- Modal Edit Profile -->
       </section>
     </main>
   </div>
 </body>
+
 
 </html>
