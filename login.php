@@ -6,18 +6,18 @@ session_start();
 
 if (isset($_POST['submit'])) {
 
-   $filter_email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-   $email = mysqli_real_escape_string($conn, $filter_email);
+   $filter_npm = filter_var($_POST['npm'], FILTER_SANITIZE_EMAIL);
+   $npm = mysqli_real_escape_string($conn, $filter_npm);
    $filter_pass = filter_var($_POST['pass'], FILTER_SANITIZE_SPECIAL_CHARS);
    $pass = mysqli_real_escape_string($conn, md5($filter_pass));
 
-   $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE email = '$email' AND password = '$pass'") or die('query failed');
+   $select_users = mysqli_query($conn, "SELECT * FROM `users` WHERE npm = '$npm' AND password = '$pass'") or die('query failed');
 
    if (mysqli_num_rows($select_users) > 0) {
       $row = mysqli_fetch_assoc($select_users);
 
       $_SESSION['user_name'] = $row['name'];
-      $_SESSION['user_email'] = $row['email'];
+      $_SESSION['user_npm'] = $row['npm'];
       $_SESSION['user_id'] = $row['id'];
 
       header('location:dashboard.php');
@@ -57,8 +57,8 @@ if (isset($_POST['submit'])) {
    <section class="form-container">
       <form action="" method="post">
          <h3>Login Now</h3>
-         <input type="email" name="email" class="box" placeholder="Enter your email" required>
-         <input type="password" name="pass" class="box" placeholder="Enter your password" required>
+         <input type="number" name="npm" class="box" placeholder="masukan npm" required>
+         <input type="password" name="pass" class="box" placeholder="masukan password" required>
          <input type="submit" class="btn" name="submit" value="Login Now">
          <p>Don't have an account? <a href="register.php">Register now</a></p>
       </form>
