@@ -51,7 +51,7 @@
       </div>
       <div class="flex-container">
         <?php
-        $select_products = mysqli_query($conn, "SELECT * FROM `products` LIMIT 12") or die('query failed');
+        $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
         if (mysqli_num_rows($select_products) > 0) {
           while ($fetch_products = mysqli_fetch_assoc($select_products)) {
         ?>
